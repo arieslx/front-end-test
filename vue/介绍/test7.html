@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>组件化构建</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app-7">
+        <ol>
+            <todo-item
+                v-for = "item in groceryList"
+                v-bind:todo = "item"
+                v-bind:key = "item.id">
+            </todo-item>
+        </ol>
+    </div>
+    <script>
+        Vue.component("todo-item",{
+            props: ["todo"],
+            template:"<li>{{ todo.text }}</li>"
+        })
+        var app7 = new Vue({
+            el: "#app-7",
+            data: {
+                groceryList: [
+                    { id: 0, text: "蔬菜"},
+                    { id: 1, text: "奶酪"},
+                    { id: 2, text: "麦当劳"}
+                ]
+            }
+        })
+        // 尽管这只是一个刻意设计的例子，但是我们已经设法将应用分割成了两个更小的单元。
+        // 子单元通过 prop 接口与父单元进行了良好的解耦。
+    </script>
+</body>
+</html>
