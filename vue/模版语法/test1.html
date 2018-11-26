@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>模版语法-插值</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app-1">
+        <p v-once>Message: {{ msg }}</p>
+        <p>U can change response: {{ response }}</p>
+    </div>
+    <script>
+        var vm = new Vue({
+            el: "#app-1",
+            data:{
+                msg:"初始值",
+                response: "我要修改值"
+            },
+        })
+        // 加上v-once，修改vm.msg不会修改视图上的内容
+    </script>
+</body>
+</html>
