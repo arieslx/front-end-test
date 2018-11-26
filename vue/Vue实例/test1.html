@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>数据与方法</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app-1">
+       <!-- 这里不能放置{{ data }} -->
+    </div>
+    <script>
+        var data = { a:1 }
+        var vm = new Vue({
+            el: '#app-1',
+            data: data
+        })
+        
+        //获得这个实例上的属性
+        //返回源数据中对应的字段
+        if (vm.a == data.a) {
+            console.log("相等");
+        }
+        vm.a = 2
+        console.log(data.a);
+
+        data.a = 3
+        console.log(vm.a);
+    </script>
+</body>
+</html>
