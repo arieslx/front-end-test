@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性和侦听器-class与style绑定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="test1" v-bind:class="[activeClass,errorClass]"></div>
+    <div id="test2" v-bind:class="[isActive ? activeClass : '', errorClass]"></div>
+    <div id="test3" v-bind:class="[{active : isActive }, errorClass]"></div>
+    <script>
+        var vm = new Vue({
+            el: "#test1",
+            data:{
+                activeClass: 'active',
+                errorClass: 'text-danger'
+            }
+        })
+        vm.isActive = false;
+        var vm1 = new Vue({
+            el: "#test2",
+            data: {
+                isActive: false,
+                activeClass: 'active',
+                errorClass: 'text-danger'
+            }
+        })
+        vm1.isActive = true;
+        var vm2 = new Vue({
+            el: "#test3",
+            data: {
+                isActive: false,
+                activeClass: 'active',
+                errorClass: 'text-danger'
+            }
+        })
+        vm2.isActive = true;
+    </script>
+</body>
+</html>

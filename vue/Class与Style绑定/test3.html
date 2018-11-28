@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算属性和侦听器-class与style绑定</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="test"><my-component class="baz boo"></my-component></div>
+    <div id="test1"><my-component1 v-bind:class="{active : isActive}"></my-component1></div>
+    <script>
+        Vue.component('my-component',{
+            template: "<p class='foo bar'>hi</p>"
+        })
+        Vue.component('my-component1',{
+            template: "<p class='foo bar'>hi</p>"
+        })
+        var vm = new Vue({
+            el: "#test"
+        })
+        var vm1 = new Vue({
+            el: "#test1",
+            data : {
+                isActive: true
+            }
+        })
+    </script>
+</body>
+</html>
