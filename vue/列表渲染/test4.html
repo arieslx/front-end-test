@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>列表渲染</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <ul id="v-for-object" class="demo">
+        <li v-for="(value,key,index) in object">
+            {{ index }}. {{ key }} : {{ value }}
+        </li>
+    </ul>
+    <script>
+        new Vue({
+            el: "#v-for-object",
+            data: {
+                object: {
+                    firstName: 'John',
+                    lastName: 'Doe',
+                    age: 30
+                }
+            }
+        })
+    </script>
+</body>
+</html>
