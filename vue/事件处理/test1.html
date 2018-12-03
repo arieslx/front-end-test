@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件处理</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="example-2">
+        <button v-on:click="greet">Greet</button>
+    </div>
+    <script>
+       var example2 = new Vue({
+           el: '#example-2',
+           data: {
+               name: 'Vue.js'
+           },
+           methods: {
+               greet:　function(event){
+                   alert('hello' + this.name+'!')
+                   if(event){
+                       alert(event.target.tagName)
+                   }
+               }
+           }
+       })
+    //    example2.greet() 这是直接调用
+    </script>
+</body>
+</html>
