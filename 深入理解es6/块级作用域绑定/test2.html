@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>块级声明-let声明</title>
+</head>
+<body>
+    <script>
+        function getValue(condition){
+            if (condition) {
+                let value = 'blue';
+                //sth else
+                console.log(value);
+                return value;
+            }else{
+                //此处不可访问value
+                return null;
+            }
+            //此处不能访问value
+            console.log(value); //为什么这里访问不到了
+        }
+        // getValue(false);
+        getValue(true);
+        /*
+        现在这个getValue函数的运行结果更像类c语言，变量value改由关键字
+        let进行声明之后，不再被提升到函数顶部，执行流离开if块，value立刻被销毁
+        如果condition的值为false，就永远也不会初始化value
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>var声明及变量提升(hoisting)机制</title>
+</head>
+<body>
+    <script>
+        function getValue(condition){
+            console.log(value);
+            if (condition) {
+                var value = 'blue';
+                //sth else
+                return value;
+            }else{
+                //此处可访问value，其值为undefined
+                console.log(value);
+                return null;
+            }
+            //此处能访问value，其值为undefined
+            console.log(value); //为什么这里访问不到了
+        }
+        getValue(false);
+        //getValue(true);
+    </script>
+</body>
+</html>

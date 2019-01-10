@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>const与let</title>
+</head>
+<body>
+    <script>
+        //const和let声明的都是块级作用域，所以常量也只在当前代码块内有效，一旦执行到块外就会立即被销毁，常量同时也不会被提升至作用域的顶部
+        var a = 1
+        if (a) {
+            const maxItems = 5;
+            console.log(maxItems);
+        }
+        // console.log(maxItems); // 抛出错误 test5.html:17 Uncaught ReferenceError: maxItems is not defined at test5.html:17
+
+        var message = 'hello';
+        let age = 25;
+
+        //接下来的两句都会抛出错误
+        // const message = 'goodbye';
+        // const age = 30;
+
+        /*
+        尽管有很多相似之处，但const声明与let声明有一处很大的不同
+        即无论在严格模式还是非严格模式下，但不可以为const定义的常量再赋值
+        否则会抛出错误
+        */
+        const maxItems = 5;
+        maxItems = 6;
+    </script>
+</body>
+</html>

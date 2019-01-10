@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>禁止重声明</title>
+</head>
+<body>
+    <script>
+        //错误演示
+        function errorExp(){
+            var count = 0;
+            //同一作用域不能重复定义已经存在的标识符
+            let count = 1;
+        }
+        // errorExp(); //去掉注释会显示 test3.html:16 Uncaught SyntaxError: Identifier 'count' has already been declared at test3.html:16
+        function anotherExp(){
+            var count = 30;
+            //if条件还是可以访问到count=30
+            if (count) {
+                //当前作用域内嵌套另一作用域，便可在内嵌的作用域中用let声明同名函数。
+                let count = 40
+                //more code
+                console.log(count);
+            }
+        }
+        anotherExp(); //由于此处的let实在if块中声明了新变量count，因此不会抛出错误，内部块的count会遮蔽全局作用域中的count，后者只有在if块外才能访问到。
+    </script>
+</body>
+</html>
