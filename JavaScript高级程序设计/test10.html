@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>阻止事件进一步捕获或者冒泡</title>
+</head>
+<body>
+    <input type="button" value="click me" id="myBtn">
+    <script>
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function(event){
+            alert('clicked');
+            event.stopPropagation();
+        };
+        document.body.onclick = function(event){
+            alert("body clicked");
+        }
+    </script>
+</body>
+</html>

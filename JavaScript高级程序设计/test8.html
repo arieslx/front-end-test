@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>event事件</title>
+</head>
+<body>
+    <input type="button" value="click me" id="myBtn">
+    <input type="button" value="click me" id="myBtn1">
+    <input type="button" value="click me" id="myBtn2">
+    <input type="button" value="click me" id="myBtn3">
+    <script>
+        var btn = document.getElementById("myBtn");
+        var btn1 = document.getElementById("myBtn1");
+        var btn2 = document.getElementById("myBtn2");
+        var btn3 = document.getElementById("myBtn3");
+        btn.onclick = function(event){
+            console.log(event.type);
+            console.log(event.bubbles); // true 表明事件是否冒泡 boolean
+            console.log(event.cancelable); // true 表明是否可以取消事件的默认行为 boolean 
+            console.log(event.currentTarget); // input整个元素 其事件处理程序当前正在处理事件的那个元素 element
+            console.log(event.defaultPrevented); //false 为true表示已经调用了preventDefault(),dom3事件新增 boolean
+            console.log(event.detail); // 1 与事件相关的细节信息 integer
+            console.log(event.eventPhase); //2 调用事件处理程序阶段，1表示捕获阶段，2表示“处于目标”，3表示冒泡阶段 integer
+            console.log(event.preventDefault());//undefined 取消事件的默认行为，如果cancelable是true，则可以使用这个方法 function
+            console.log(event.stopImmediatePropagation()); //undefined 取消事件的进一步捕获或者冒泡，同时组织事件处理程序被调用，dom3事件新增！！！ function
+            console.log(event.stopPropagation()); //undefined 取消事件的进一步捕获或者冒泡，如果bubbles为true，则用这个方法！！！function
+            console.log(event.target); //事件的目标 整个input标签 element
+            console.log(event.trusted); //boolean 但是这边显示undefined 为true表示事件是浏览器生成的，为false表示是由开发人员js生成，dom3事件新增 boolean
+            console.log(event.type); //click 被触发的时间类型 string
+            console.log(event.view); //window 与事件关联的抽象视图，等同于发生事件的window对象 abstractview
+        };
+        btn1.addEventListener("click",function(event) {
+            console.log(event.trusted);
+        },false);
+        btn2.onclick = function(event){
+            console.log(event.currentTarget === this);
+            console.log(event.target === this);
+        }
+        document.body.onclick = function(event){
+            console.log(event.currentTarget === document.body);
+            console.log(document.body === this);
+            console.log(event.target === document.getElementById("myBtn3"));
+        }
+    </script>
+</body>
+</html>

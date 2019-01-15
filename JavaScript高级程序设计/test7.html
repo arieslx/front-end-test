@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM中的事件对象</title>
+</head>
+<body>
+    <input type="button" value="click me" onclick="alert(event.type)">
+    <input type="button" value="click me" id="myBtn">
+    <script>
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function(event){
+            alert(event.type);
+        };
+        btn.addEventListener("click",function(event) {
+            alert(event.type)
+        },false);
+    </script>
+</body>
+</html>
