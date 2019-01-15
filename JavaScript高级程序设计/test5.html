@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IE事件处理程序</title>
+</head>
+<body>
+    <input type="button" value="" id="myBtn1">
+    <script>
+        var btn1 = document.getElementById('myBtn1');
+        btn1.attachEvent("onclick",function(){
+            alert("hello world");
+            alert(this === window);
+        });
+        btn1.attachEvent("onclick",function myBtn2(){
+            alert("hello world")
+            btn1.detachEvent("onclick",myBtn2);
+        });
+        //remove不能移除匿名函数
+        //ie中不能实现
+    </script>
+</body>
+</html>

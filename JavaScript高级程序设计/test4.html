@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM2级事件处理程序</title>
+</head>
+<body>
+    <input type="button" value="" id="myBtn1">
+    <input type="button" value="" id="myBtn2">
+    <script>
+        var btn1 = document.getElementById('myBtn1');
+        btn1.addEventListener("click",function(){
+            alert("hello world")
+        },false);
+        var btn2 = document.getElementById('myBtn2');
+        btn2.addEventListener("click",function myBtn2(){
+            alert("hello world")
+            btn2.removeEventListener("click",myBtn2,false);
+        },false);
+        //remove不能移除匿名函数
+    </script>
+</body>
+</html>

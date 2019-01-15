@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>跨浏览器的事件处理程序</title>
+    <script src="./EventUtil.js"></script>
+</head>
+<body>
+    <input type="button" value="btn" id="myBtn">
+    <script>
+        var btn = document.getElementById("myBtn");
+        var doSth = function(){
+            alert("dosth");
+            EventUtil.removeHandler(btn,"click",doSth);
+        };
+        EventUtil.addHandler(btn,"click",doSth);
+        
+        //这两个函数没有考虑到ie浏览器等问题，dom0级对每个事件只支持一个事件处理程序试用场景问题？
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML事件处理程序:try-catch</title>
+</head>
+<body>
+    <input type="button" value="click me" onclick="try{showMessage();}catch(ex){console.log(ex)}">
+    <script>
+        function showMessage(){
+            alert('hello');
+        }
+        //疑问：如果在showMessage函数有定义之前点击了按钮，用户将不会看到js错误，因为在浏览器有机会处理错误之前，错误就被捕获了。
+    </script>
+</body>
+</html>

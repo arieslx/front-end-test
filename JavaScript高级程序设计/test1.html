@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML事件处理程序</title>
+</head>
+<body>
+    <!-- 输入click -->
+    <input type="button" value="click me" onclick="alert(event.type)">
+    <!-- 输入click -->
+    <input type="button" value="click me" onclick="alert(this.value)">
+    <!-- 输入click 3-->
+    <input type="button" value="click me" onclick="alert(value)">
+    <script>
+        function innerTest(){
+            with(document){
+                with(this){
+                    console.log(this); //window
+                    console.log(document); //document
+                }
+                // console.log(ducument); //这里访问不到document
+            }
+        }
+        innerTest(); //3 内部实现
+    </script> 
+</body>
+</html>

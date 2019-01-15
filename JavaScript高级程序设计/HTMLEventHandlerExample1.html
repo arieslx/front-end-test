@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML事件处理程序</title>
+    <script>
+            function htmlTest() {
+                with(document){
+                    // with(this.form){
+                        with(this){
+                            console.log(document);
+                            // console.log(this.form);
+                            console.log(this);
+                        }
+                    // }
+                }
+            }
+            htmlTest(); //上述input例子，内部实现,找不到this.form
+            function htmlTest1() {
+                with(document){
+                    with(this.form){
+                        with(this){
+                            console.log(document);
+                            console.log(this.form); //还是报错，错误提示在ex里面
+                            console.log(this);
+                        }
+                    }
+                }
+            }
+            try{
+                htmlTest1();
+            }catch(ex){
+                console.log(ex);
+            }
+    </script>
+</head>
+<body>
+    <form action="" method="post">
+        <input type="text" name="username" value="">
+        <input type="button" value="Echo Username" onclick="alert(username.value)">
+    </form>   
+</body>
+</html>
