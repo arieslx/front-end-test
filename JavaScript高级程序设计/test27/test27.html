@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>右键菜单</title>
+    <script src="./EventUtil.js"></script>
+</head>
+<body>
+    <div id="myDiv">
+        Right click or ctrl+click me to get a custom context menu.
+        Click anywhere else to get the default context menu.
+    </div>
+    <ul id="myMenu" style="position:absolute;visibility:hidden;background-color:silver">
+        <li><a href="http://www.nczonline.net">Nicholas' site</a></li>
+        <li><a href="http://www.wrox.com">Wrox site</a></li>
+        <li><a href="http://www.yahoo.com">Yahoo!</a></li>
+    </ul>
+    <script>
+        EventUtil.addHandler(window,"load",function(event) {
+            var div = document.getElementById("myDiv");
+            EventUtil.addHandler(div,"contextmenu",function(event) {
+                event = EventUtil.getEvent(event);
+                EventUtil.preventDefault(event);
+
+                var menu = document.getElementById("myMenu");
+                menu.style.left = event.clientX + "px";
+                menu.style.top = event.clientY + "px";
+                menu.style.visibility = "visible";
+            });
+
+            EventUtil.addHandler(document,"click",function(event) {
+                document.getElementById("myMenu").style.visibility = "hidden";
+            })
+        });
+
+        EventUtil.addHandler(window,"beforeunload",function(event) {
+            event = EventUtil.getEvent(event);
+            var message = "I'm really going to miss you if you go.";
+            event.returnValue = message;
+            return message;
+        });
+
+        EventUtil.addHandler(document,"DOMContentLoaded",function(event) {
+            alert("Content loaded");
+        })
+
+        //对于不支持DOMContentLoaded的事件
+        setTimeout(function(){
+            alert("setTimeout loaded");
+        },0);
+
+        EventUtil.addHandler(document,"readystatechange",function(event) {
+            if (document.readyState == "interactive") {
+                alert("Content2 loaded");
+            }
+        })
+    </script>
+</body>
+</html>

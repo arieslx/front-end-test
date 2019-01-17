@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>客户端坐标信息</title>
+    <script src="./EventUtil.js"></script>
+</head>
+<body>
+    <div id="myDiv1">获取客户端坐标信息值</div>
+    <div id="myDiv2">获取页面坐标信息值</div>
+    <div id="myDiv3">document.body（混杂模式）或document.documentElement（标准模式）中的scrollLeft和scrollTop属性。</div>
+    <div id="myDiv4">获取屏幕坐标信息值</div>
+    <script>
+        var div1 = document.getElementById("myDiv1");
+        EventUtil.addHandler(div1,"click",function(event) {
+            event = EventUtil.getEvent(event);
+            alert("Client coordinates:" + event.clientX +","+ event.clientY);
+        });
+        var div2 = document.getElementById("myDiv2");
+        EventUtil.addHandler(div2,"click",function(event) {
+            event = EventUtil.getEvent(event);
+            alert("Page coordinates:" + event.pageX +","+ event.pageY);//在页面没有滚动的时候，这两种值相等
+        });
+        var div3 = document.getElementById("myDiv3");
+        EventUtil.addHandler(div3,"click",function(event) {
+            event = EventUtil.getEvent(event);
+            var pageX = event.pageX,
+                pageY = event.pageY;
+
+            if (pageX === undefined) {
+                pageX = event.clientX + (document.body.scrollLeft || document.documentElement.scrollLeft);
+            }
+
+            if (pageY === undefined) {
+                pageY = event.clientY + (document.body.scrollTop || document.documentElement.scrollTop);
+            }
+
+            alert("Page coordinates:" + pageX + "," + pageY);
+        })
+        var div4 = document.getElementById("myDiv4");
+        EventUtil.addHandler(div4,"click",function(event) {
+            event = EventUtil.getEvent(event);
+            alert("screen coordinates:" + event.screenX + "," + event.screenY); 
+        })
+    </script>
+</body>
+</html>

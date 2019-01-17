@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>keyup,keypress和keycode</title>
+    <script src="./EventUtil.js"></script>
+</head>
+<body>
+    <input type="text" name="输入框" id="myText">
+    <hr>
+    <input type="text" name="输入框" id="myText1">
+    <hr>
+    <input type="text" name="输入框" id="myText2">
+    <hr>
+    <input type="text" name="输入框" id="myText3">
+    <hr>
+    <input type="text" name="输入框" id="myText4">
+    <hr>
+    <input type="text" name="输入框" id="myText5">
+    <hr>
+    <input type="text" name="输入框" id="myText6">
+    <hr>
+    <input type="text" name="输入框" id="myText7">
+    <hr>
+    <input type="text" name="输入框" id="myText8">
+    <script>
+        var textbox = document.getElementById("myText");
+        EventUtil.addHandler(textbox,"keyup",function(event) {
+            event = EventUtil.getEvent(event);
+            alert(event.keyCode); //chrome,ie,safari 分号按键不太一样
+        })
+        var textbox1 = document.getElementById("myText1");
+        EventUtil.addHandler(textbox1,"keypress",function (event) {
+            event = EventUtil.getEvent(event);
+            eventCode = EventUtil.getCharCode(event)
+            alert(String.fromCharCode(eventCode)); //无enter
+        })
+        var textbox2 = document.getElementById("myText2");
+        EventUtil.addHandler(textbox2,"keypress",function (event) {
+            event = EventUtil.getEvent(event);
+            var identifier = event.key || event.keyIdentifier;
+            if (identifier) {
+                alert(identifier); //有enter 跨浏览器不推荐
+            }
+        })
+        var textbox3 = document.getElementById("myText3");
+        EventUtil.addHandler(textbox3,"keypress",function (event) {
+            event = EventUtil.getEvent(event);
+            var loc = event.location || event.keyLocation
+            if (loc) {
+                alert(loc); //chrome等不支持 跨浏览器不推荐
+            }
+        })
+        var textbox4 = document.getElementById("myText4");
+        EventUtil.addHandler(textbox4,"keypress",function (event) {
+            event = EventUtil.getEvent(event);
+            if (event.getModifierState) {
+                alert(event.getModifierState("shift")); //按指定shift按键没有生效
+            }
+        })
+        var textbox5 = document.getElementById("myText5");
+        EventUtil.addHandler(textbox5,"textInput",function (event) {
+            event = EventUtil.getEvent(event);
+            alert(event.data); //按住shift键的时候，有大小写
+        });
+
+        var isSupported = document.implementation.hasFeature("compositionEvent",3.0);
+
+        var textbox6 = document.getElementById("myText6");
+        var textbox7 = document.getElementById("myText7");
+        var textbox8 = document.getElementById("myText8");
+
+        EventUtil.addHandler(textbox6,"compositionstart",function (event) {
+            event = EventUtil.getEvent(event);
+            alert(event.data); //按住shift键的时候，有大小写
+        });
+
+        EventUtil.addHandler(textbox7,"compositionupdate",function (event) {
+            event = EventUtil.getEvent(event);
+            alert(event.data); //按住shift键的时候，有大小写
+        });
+
+        EventUtil.addHandler(textbox8,"compositionend",function (event) {
+            event = EventUtil.getEvent(event);
+            alert(event.data); //按住shift键的时候，有大小写
+        });
+    </script>
+</body>
+</html>
