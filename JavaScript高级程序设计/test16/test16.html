@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>确定样式表是否加载完成</title>
+    <script src="./EventUtil.js"></script>
+</head>
+<body>
+    <script>
+         EventUtil.addHandler(window,"load",function(event){
+             var link = document.createElement("link");
+             link.type = "text/css";
+             link.rel = "stylesheet";
+             EventUtil.addHandler(link,"load",function(event){
+                alert("css loaded");
+             });
+             link.href = "example.css";
+             document.getElementsByTagName("head")[0].appendChild(link);
+         })
+         
+         EventUtil.addHandler(window,"unload",function(event) {
+             alert("unloaded 了") //没有生效 chrome和火狐禁止alert这个属性了
+         })
+         EventUtil.addHandler(window,"resize",function(event) {
+             alert("resize 了") //没有生效 chrome和火狐禁止alert这个属性了
+         })
+         EventUtil.addHandler(window,"scroll",function(event) {
+             if(document.compatMode == "CSS1Compat"){
+                 alert(document.documentElement.scrollTop)  
+             }else{
+                alert("lalla"); //请在有滚动条的情况下测试
+             }
+         })
+    </script>
+</body>
+</html>

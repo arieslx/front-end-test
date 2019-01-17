@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>load事件</title>
+    <script src="./EventUtil.js"></script>
+</head>
+<!-- 3 -->
+<body onload="alert('body onloaded')">
+    <!-- 1 -->
+    <img src="./simple.jpg" alt="small pig" onload="alert('img onloaded')"><img src="./simple.jpg" alt="small pig js" id="myImg">
+    <script>
+        var image = document.getElementById('myImg');
+        EventUtil.addHandler(image,"load",function(event) {
+            event = EventUtil.getEvent(event);
+            alert(EventUtil.getTarget(event).src); //2
+        })
+
+        //创建要给img
+        EventUtil.addHandler(window,"load",function(event) {
+            var image1 = document.createElement("img");
+            EventUtil.addHandler(image1,"load",function(event) {
+                event = EventUtil.getEvent(event);
+                alert(EventUtil.getTarget(event).src);
+            });
+            document.body.appendChild(image1);
+            image1.src = "simple.jpg";
+        })
+
+        //dom0级创建img
+        EventUtil.addHandler(window,"load",function(){
+            var image2 = new Image();
+            EventUtil.addHandler(image2,"load",function(event){
+                alert("image2 loaded!");
+            });
+            document.body.appendChild(image2); //现在可以添加到dom树啦
+            image2.src = "simple.jpg";
+        })
+
+        //动态生成的image之间没有2px空白
+        //两个img之间的空白间隙通常是因为标签之间的换行符或者空格符
+    </script>
+</body>
+</html>

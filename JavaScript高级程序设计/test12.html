@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IE中的事件对象</title>
+</head>
+<body>
+    <input type="button" value="click me" id="myBtn">
+    <input type="button" value="click me" id="myBtn1">
+    <input type="button" value="click me" id="myBtn2">
+    <a href="http://www.baidu.com" id="myLink">我是百度</a>
+    <script>
+        var btn = document.getElementById("myBtn");
+        btn.onclick = function() {
+            var event = window.event;
+            alert(event.type); //"click"
+            console.log(window.event.srcElement === this);
+        }
+
+        var btn1 = document.getElementById("myBtn");
+        // btn1.attachEvent("onclick",function(event) {
+        //     alert(event.type); 
+        // }); //ie8以上不支持attachEvent
+
+        // btn1.addEventListener("onclick",function(event) {
+        //     alert(event.type); 
+        //     console.log(event.srcElement === this); //无效，本应是false
+        // }); //无效
+        var link = document.getElementById("myLink");
+        link.onclick = function(){
+            window.event.returnValue = false; //阻止ie默认行为
+        }
+
+        var btn2 = document.getElementById("myBtn2");
+        btn2.onclick = function(){
+            alert("clicked");
+            window.event.cancelBubble = true; //组织ie中事件冒泡
+        };
+        document.body.onclick = function(){
+            alert("body clicked");
+        }
+    </script>
+</body>
+</html>

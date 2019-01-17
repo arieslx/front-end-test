@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>动态加载js文件</title>
+    <script src="./EventUtil.js"></script>
+</head>
+<body>
+    <script>
+        EventUtil.addHandler(window,"load",function(){
+            var script = document.createElement("script");
+            EventUtil.addHandler(script,"load",function(event){
+                alert("script loaded");
+            });
+            script.src = "example.js";
+            document.body.appendChild(script);
+        })
+        //先显示加载example成功，再显示script loaded
+    </script>
+</body>
+</html>
