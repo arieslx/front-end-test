@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>页面显示</title>
+    <script src="./EventUtil.js"></script>
+</head>
+<body>
+    
+    <script>
+        (function() {
+            var showCount = 0;
+            EventUtil.addHandler(window,"load",function() {
+                alert("load fired");
+            });
+
+            EventUtil.addHandler(window,"pageshow",function(){
+                showCount++;
+                alert("show has been fired" +　showCount + "times.Persisted" + event.persisted);
+            });
+        })();
+    </script>
+</body>
+</html>

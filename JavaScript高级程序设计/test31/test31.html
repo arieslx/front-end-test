@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端触摸事件</title>
+</head>
+<body>
+    <script>
+        function handleTouchEvent(event) {
+            var output = document.getElementById("output");
+            switch (event.type) {
+                case "touchstart":
+                    output.innerHTML = " Touch started("+ event.touches[0].clientX +
+                                       ","+ event.touches[0].clientY +")";
+                    break;
+                case "touchend":
+                    output.innerHTML += " <br>Touch ended (" +
+                                    event.changedTouches[0].clientX + "," +
+                                    event.changedTouches[0].clientY +")";
+                    break;
+                case "touchmove":
+                    event.preventDefault();
+                    output.innerHTML += " <br>Touch moved (" +
+                                    event.changedTouches[0].clientX + "," +
+                                    event.changedTouches[0].clientY +")";
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>监听移动端屏幕翻转</title>
+    <script src="./EventUtil.js"></script>
+</head>
+<body>
+    <div id="output"></div>
+    <div id="arrow"></div>
+    <script>
+       EventUtil.addHandler(window,"deviceorientation",function(event) {
+           var output = document.getElementById("output");
+           output.innerHTML = "Alpha=" + event.alpha + ",Beta=" + event.beta +
+                              ",Gamma=" + event.gamma + "<br>"
+       });
+
+       EventUtil.addHandler(window,"deviceorientation",function(event) {
+           var arrow = document.getElementById("arrow");
+           arrow.style.webkitTransform = "rotate('+ Math.round(event.alpha) +' deg )"
+       }); //局域网有点问题，在手机上还未测试
+    </script>
+</body>
+</html>

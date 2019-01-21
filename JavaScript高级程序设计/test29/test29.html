@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>监听移动端屏幕翻转</title>
+    <script src="./EventUtil.js"></script>
+</head>
+<body>
+    <div id="myDiv"></div>
+    <script>
+        EventUtil.addHandler(window,"load",function(event) {
+            var div = document.getElementById("myDiv");
+            div.innerHTML = "Current orientation is " + window.orientation;
+        });
+
+        EventUtil.addHandler(window,"orientationchange",function(event) {
+            var div = document.getElementById("myDiv");
+            div.innerHTML = "Current orientation is " + window.orientation;
+        });
+    </script>
+</body>
+</html>
