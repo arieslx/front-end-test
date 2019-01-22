@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端触摸事件</title>
+    <script src="./EventUtil.js"></script>
+</head>
+<body>
+    <div id="output"></div>
+    <script>
+        function handleGestureEvent(event) {
+            var output = document.getElementById("output");
+            switch (event.type) {
+                case "gesturestart":
+                    output.innerHTML = " Gesture started(rotation="+ event.rotation+
+                                       ",scale"+ event.scale +")";
+                    break;
+                case "gestureend":
+                    output.innerHTML += " <br>Gesture ended (rotation=" +
+                                    event.rotation + ",scale=" +
+                                    event.scale +")";
+                    break;
+                case "gesturechange":
+                    output.innerHTML += " <br>Gesture changed (rotation" +
+                                    event.rotation + ",scale=" +
+                                    event.scale +")";
+                    break;
+            }
+        }
+        document.addEventListener("gesturestart",handleGestureEvent,false);
+        document.addEventListener("gestureend",handleGestureEvent,false);
+        document.addEventListener("gesturechange",handleGestureEvent,false);
+    </script>
+</body>
+</html>
