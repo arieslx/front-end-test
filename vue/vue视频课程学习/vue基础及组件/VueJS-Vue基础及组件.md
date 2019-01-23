@@ -7,9 +7,9 @@
 ---
 
 #### (1).历史介绍
-* angular 09年，年份较早，一开始大家是拒绝  star:![image-20180805111029197](/var/folders/7b/sz6pt5jd3y3b51q1ngm_8pph0000gn/T/abnerworks.Typora/image-20180805111029197.png)
-* react 2013年, 用户体验好，直接拉到一堆粉丝 star:![image-20180805110949122](/var/folders/7b/sz6pt5jd3y3b51q1ngm_8pph0000gn/T/abnerworks.Typora/image-20180805110949122.png)
-* vue 2014年,  用户体验好  star:![image-20180805110909812](/var/folders/7b/sz6pt5jd3y3b51q1ngm_8pph0000gn/T/abnerworks.Typora/image-20180805110909812.png)
+* angular 09年，年份较早，一开始大家是拒绝  
+* react 2013年, 用户体验好，直接拉到一堆粉丝 
+* vue 2014年,  用户体验好 
 
 #### (2).前端框架与库的区别?
 
@@ -199,7 +199,7 @@
     - 在js中 this.属性名 用
 * 总结:父传,子声明,就是子的了
 * 小补充: 常量传递直接用，变量传递加冒号
-* ![image-20180811220901826](/var/folders/7b/sz6pt5jd3y3b51q1ngm_8pph0000gn/T/abnerworks.Typora/image-20180811220901826.png)
+* ![父子组件](父子组件.png)
 
 
 
