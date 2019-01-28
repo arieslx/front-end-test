@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-todolists-全局组件的使用</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="todoMsg">
+        <button @click="handletodoMsg">提交信息</button>
+        <ul>
+            <!-- <li v-for='item in lists'>{{ item }}</li> -->
+            <todo-item v-bind:content="item" 
+                       v-for='item in list'></todo-item>
+        </ul>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.22/vue.min.js"></script>
+    <script>
+        Vue.component("TodoItem",{
+            props: ["content"],
+            template: "<li>{{ content }}</li>"
+            // template: "<li>"+this.content+"</li>" 要使用插值表达式的形式
+        })
+
+        var app = new Vue({
+            el: '#app',
+            data:{
+                todoMsg:'',
+                content: 'hello world',
+                lists:['吃饭饭','睡觉觉','打豆豆'],
+                list: []
+            },
+            methods: {
+                handletodoMsg:function(){
+                    app.$data.list.push(this.todoMsg);
+                    this.todoMsg = '';
+                }
+            },
+        });
+    </script>
+</body>
+</html>

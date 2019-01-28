@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>vue-todolists-父子组件相互传值</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="todoMsg">
+        <button @click="handletodoMsg">提交信息</button>
+        <ul>
+            <!-- <li v-for='item in lists'>{{ item }}</li> -->
+            <!-- v-bind:content :content -->
+            <todo-item :content ="item" 
+                       v-bind:index ="index"
+                       v-for='(item,index) in list'
+                       @delete="handleItemDelete">
+            </todo-item>
+        </ul>
+    </div>
+    <script src="https://cdn.bootcss.com/vue/2.5.22/vue.min.js"></script>
+    <script>
+        var TodoItem = {
+            props: ["content","index"],
+            template: "<li @click='handleItemClick'>{{ content }}</li>",
+            methods: {
+                handleItemClick: function () {
+                    //
+                    this.$emit("delete",this.index);
+                }
+            }
+        }
+
+        var app = new Vue({
+            el: '#app',
+            components: {
+                TodoItem: TodoItem
+            },
+            data:{
+                todoMsg:'',
+                content: 'hello world',
+                lists:['吃饭饭','睡觉觉','打豆豆'],
+                list: []
+            },
+            methods: {
+                handletodoMsg: function(){
+                    app.$data.list.push(this.todoMsg);
+                    this.todoMsg = '';
+                },
+                handleItemDelete: function(index){
+                    this.list.splice(index,1);
+                }
+            },
+        });
+    </script>
+</body>
+</html>
