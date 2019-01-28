@@ -16,9 +16,8 @@
         </ul>
     </div>
     <script>
-        function Page() {
-            
-        }
+        // m v 视图 p 控制器  设计模式
+        function Page() {}
 
         $.extend(Page.prototype,{
             init: function() {
@@ -26,17 +25,22 @@
             },
             bindEvents: function() {
                 var btn = $('#btn');
+                //$.proxy将handleBtnClick这个函数，永远的绑成了这个时候的this
                 btn.on('click', $.proxy(this.handleBtnClick,this
                     ))
             },
             handleBtnClick: function() {
-                var ulV = $('#ulValue');
-                var inputV = $('#input').val();
-                ulV.innerText = inputV;
+                var ulEle = $('#ulValue');
+                //这样做一个保存，提高代码性能
+                var inputEle = $("#input")
+                var inputVal = inputEle.val();
+                ulEle.append('<li>'+ inputVal +'</li>');
+                $('#input').val('');
             }
         })
 
         var page = new Page();
+        
         page.init();
     </script>
 </body>
