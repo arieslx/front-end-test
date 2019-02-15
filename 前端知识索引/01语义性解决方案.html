@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>语义化标签在ie下兼容行问题解决方式</title>
+	<style type="text/css">
+		
+		nav {
+			height: 200px;
+			background-color: red;
+			/* 将元素转化为块级元素,默认ie不识别前提下识别为行内元素 */
+			/* display: block;  */
+		}
+
+		header {
+			height: 200px;
+			background-color: orange;
+			/* 将元素转化为块级元素,默认ie不识别前提下识别为行内元素 */
+			/* display: block;  */
+		}
+
+
+	</style>
+<script type="text/javascript">		
+	//第一种解决方案，现将nav和header标签转化为行内元素，其次create标签
+	//document.createElement("nav");
+	//document.createElement("header");
+</script>
+<!-- 第二种解决方案 因为写好兼容性的js插件，第一步无需手动将两个标签转化为块级元素-->
+<!-- <script src="./static/html5shiv.min.js"></script> -->
+
+<!-- 第三种解决方案，hack,无须手动将两个标签转化为块级标签，当设备显示ie8以下，调用js插件，支持ie8以下 -->
+<!--[if lte IE 8]>
+	<script type="text/javascript" src="static/html5shiv.min.js"></script>
+<![endif]-->
+	
+
+
+</head>
+<body>
+	
+	<nav>自定义的标签</nav>
+
+	<header>头部标签</header>
+	
+</body>
+</html>
