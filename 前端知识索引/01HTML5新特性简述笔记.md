@@ -2,10 +2,10 @@
 
 ## 了解HTML5
 
-### 藕色字体为重点记忆片段，或者本人手动添加 <font color=#e4c6d0>Lx</font>
+### :exclamation:为重点记忆片段，或者本人手动添加 :stuck_out_tongue_winking_eye:Lx
 
 ```tex
- ☞HTML5属于上一代HTML的新迭代语言，<font color=#e4c6d0>设计HTML5最主要的目的是为了在移动设备上支持多媒体！！！</font>
+ ☞HTML5属于上一代HTML的新迭代语言，:exclamation:设计HTML5最主要的目的是为了在移动设备上支持多媒体！！！:exclamation:
    例如： video 标签和 audio 及 canvas 标记
  
  ☞ 新特性：
@@ -17,7 +17,7 @@
 	  6. 一些API
  ☞ 好处：
 	  1. 跨平台
-	  	  例如：比如你开发了一款HTML5的游戏，你可以很轻易地移植到UC的开放平台<font color=#e4c6d0>Lx：好像是阿里的应用平台</font>、Opera的游戏中心、Facebook应用平台，甚至可以通过封装的技术发放到App Store或Google Play上，所以它的跨平台性非常强大，这也是大多数人对HTML5有兴趣的主要原因。
+	  	  例如：比如你开发了一款HTML5的游戏，你可以很轻易地移植到UC的开放平台:stuck_out_tongue_winking_eye:Lx好像是阿里的应用平台:stuck_out_tongue_winking_eye:Lx、Opera的游戏中心、Facebook应用平台，甚至可以通过封装的技术发放到App Store或Google Play上，所以它的跨平台性非常强大，这也是大多数人对HTML5有兴趣的主要原因。
 
  ☞ 缺点：
 	  1. pc端浏览器支持不是特别友好，造成用户体验不佳
@@ -35,7 +35,8 @@
   <nav></nav>
   <section></section>
   ....
-  http://www.w3school.com.cn/html/html5_semantic_elements.asp<font color=#e4c6d0>Lx：文档还是可以经常看看的</font>
+  http://www.w3school.com.cn/html/html5_semantic_elements.asp
+  :stuck_out_tongue_winking_eye:Lx文档还是可以经常看看的:stuck_out_tongue_winking_eye:Lx
 ```
 
 ### 多媒体标签及属性介绍
